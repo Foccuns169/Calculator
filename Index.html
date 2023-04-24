@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="https://drive.google.com/uc?id=1-YdKRRiwi1M7mFmVVK2vVYnMwBTIBWMn&export=download">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="stylesheet" href="app.css">
+  </head>
+  <body> 
+ 
+    <center>
+      <img src="https://drive.google.com/uc?id=1FXR5CGh9D5qNuIkMUOAJ7AH-hRQ428Ct">
+    </center> 
+    
+ <center id="bot">
+     <button id="0" value="0">0</button>
+     <button id="1" value="1">1</button>
+     <button id="2" value="2">2</button>
+     <button id="3" value="3">3</button>
+     <button id="4" value="4">4</button>
+     <button id="5" value="5">5</button>
+     <button id="6" value="6">6</button>
+     <button id="7" value="7">7</button>
+     <button id="8" value="8">8</button>
+     <button id="9" value="9">9</button>
+     <br>
+     <button id="." value=".">.</button>
+     <button id="plus" value="+">+</button>
+     <button id="menos" value="-">-</button>
+     <button id="divisao" value="/">/</button>
+     <button id="vezes" value="*">X</button>
+     <button id="C" value="C">C</button>
+     <button id="igual" value="=">=</button>
+     </center>
+     
+     <center>
+     <h1 id="result"><span id="resultado"></span></h1>
+     <p id="marca">by <a href="https://github.com/Foccuns169">Gena</a> from  ver:1.0.7</p>
+     </center>
+     
+     <script>
+      let currentCalculation = '';
+
+function updateExpression(buttonValue) {
+  if (buttonValue === '=') {
+    try {
+      const result = eval(currentCalculation);
+      document.getElementById('resultado').innerHTML = result;
+      currentCalculation = result;
+    } catch (e) {
+      document.getElementById('resultado').innerHTML = 'Error';
+      currentCalculation = '';
+    }
+  } else if (buttonValue === 'C') {
+    currentCalculation = '';
+    document.getElementById('resultado').innerHTML = currentCalculation;
+  } else {
+    currentCalculation += buttonValue;
+    document.getElementById('resultado').innerHTML = currentCalculation;
+  }
+  
+  if (currentCalculation.includes('/0')) {
+    document.getElementById('resultado').innerHTML = 'Error';
+    currentCalculation = '';
+  }
+}
+
+const buttons = document.querySelectorAll('button');
+
+for (let i = 0; i < buttons.length; i++) {
+  buttons[i].addEventListener('click', function() {
+    const buttonValue = this.getAttribute('value');
+    updateExpression(buttonValue);
+  });
+}
+
+
+     </script>  
+ </body>
+</html>
